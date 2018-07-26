@@ -24,3 +24,42 @@
     }
   }
 })();
+
+google.maps.event.addDomListener(window, 'load', function(){ 
+  // Mostrando Ubicación
+  const ubicacion = new Localizacion(()=>{
+    const myLatlng = {lat : ubicacion.latitude, lng: ubicacion.longitude};
+
+    var texto = '<h1> Mi ubicación </h1>' +'<p> Descripcion del lugar </p>' ; 
+
+    const options = {
+      center : myLatlng,       
+      zoom: 16
+    }
+    
+    // Creando el marcador 
+    const map = document.getElementById('map');
+    const mapa = new google.maps.Map(map, options);
+
+
+    const marcador = new google.maps.Marker({
+      position: myLatlng,
+      map: mapa,
+      title: " Laboratoria"
+    });
+
+    const informacion = new google.maps.InfoWindow({
+      content : texto
+    });
+
+    marcador.addListener('click', function () {
+      informacion.open(mapa, marcador);
+    });
+
+    // AutoCompletado
+    const autocomplete = document.getElementById('autocomplete');
+    const search = new google.maps.places.Autocomplete(autocomplete);
+    search.bindTo("bounds",mapa);
+
+  });
+});

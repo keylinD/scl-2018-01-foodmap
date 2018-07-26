@@ -69,3 +69,8 @@ body{
     text-shadow: 6px 2px 4px #9E9E9E;
     text-underline-position: under;
 }
+
+#map{
+  width: 500px;
+  height: 500px;
+}
