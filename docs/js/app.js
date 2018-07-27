@@ -35,7 +35,7 @@ google.maps.event.addDomListener(window, 'load', function(){
     const options = {
       center : myLatlng,       
       zoom: 16,
-      mapTypeId: google.maps.mapTypeId.MAP
+      // mapTypeId: google.maps.mapTypeId.MAP
     };
     
     
